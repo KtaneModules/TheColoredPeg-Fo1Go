@@ -135,7 +135,7 @@ public class TheColoredPegScript : MonoBehaviour
 			new HashSet<Color>(_stages[0].PegColors).Count == 5, // 4 
 			_stages[0].LEDsColors.Count(x => x == _possibleColors["B"]) 
 			+ _stages[0].PegColors.Count(x => x == _possibleColors["B"]) == 2, // 5
-			bomb.GetSolvableModuleNames().Contains("Colour flash"), //  6
+			bomb.GetSolvableModuleNames().Contains("Colour Flash"), //  6
 			bomb.GetBatteryCount() <= 4, // 7
 			bomb.GetPorts().Contains("DVI"), // 8
 			Int64.Parse(bomb.GetSerialNumber().Substring(bomb.GetSerialNumber().Length-1)) % 2 == 0, // 9
@@ -435,7 +435,8 @@ public class TheColoredPegScript : MonoBehaviour
 	
 	private void Log(string logString)
 	{
-		Debug.Log(String.Format("[TheColoredPeg #{0}] {1}", _moduleID, logString));
+		foreach (var logLine in logString.Split('\n'))
+			Debug.Log(String.Format("[The Colored Peg #{0}] {1}", _moduleID, logLine));
 	}
 
 	private int GetBombLastSecond()
