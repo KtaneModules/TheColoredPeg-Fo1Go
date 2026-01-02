@@ -27,46 +27,42 @@
                 <span class="page-header-section-title">The Colored Peg</span>
             </div>
             <div class="page-content">
-                <img src="img/Component/Module Name.svg" class="diagram">
+                <img src="img/Component/The Colored Peg.svg" class="diagram">
                 <h2>On the Subject of The Colored Peg</h2>
-                <p class="flavour-text">It is BBQ, doesn't it?</p>
+                <p class="flavour-text">🫸🫓🍅🌶️🥒🍗🥬🫷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🫴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;≡ 🌯&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kebab</p>
                 <p>
-                    The module consists of two buttons "YES" and "no", a peg with 5 colored faces, 3 colored LEDs,
-                    and indicator current-passing stages.
+                    The module consists of two buttons, "YES" and "NO", a peg with 5 colored faces, 3 colored LEDs, and 3 stage indicators.
                     The colors on the module can be: red, green, blue, white, black, yellow, cyan and magenta.
-                    Pass 3 stages in order to solve the module. When you press the button at the wrong time
-                    or press the wrong button, the module will handle a strike.
+                    Pass 3 stages in order to solve the module. When you press the button at the wrong time or press the wrong button, the module will handle a strike.
                     The first face of the peg has a small circle on it.
                     Note: White is RGB, Yellow is RG, Cyan is GB, Magenta is RB, Black is nothing.
+                    <b>Keep track of all of the colors from every stage.</b> Any subsequent stage requires information about the colors of all the previous ones.
                 </p>
                 <h3>Stage 1</h3>
                 <p>On the first stage, press "YES", if more than 4 conditions apply.</p>
                <ul>
-                    <li>The peg has exactly 3 colors (Example: MMGGR).</li>
-                    <li>Every color of LEDs present on the peg.</li>
-                    <li>Amount of faces has red in it is more than 2.</li>
-                    <li>Bomb has lit FRQ.</li>
+                    <li>The peg has exactly 3 distinct colors (Example: MMGGR).</li>
+                    <li>Every color of LEDs is present on the peg.</li>
+                    <li>The amount of faces that have the red component in them is more than 2.</li>
+                    <li>The bomb has lit FRQ.</li>
                     <li>All colors on the peg are different.</li>
-                    <li>On the peg and on the LEDs are exactly 2 blue color.</li>
-                    <li>Bomb has a module “Colour Flash”.</li>
-                    <li>Bomb has less than 4 batteries.</li>
-                    <li>Bomb has DVI port.</li>
-                    <li>The last digit of serial number is even.</li>
-                    <li>The peg has a black and a white color.</li>
+                    <li>There are exactly 2 instances of the blue color on the peg + on the LEDs.</li>
+                    <li>The bomb has a module “Colour Flash”.</li>
+                    <li>The bomb has less than 4 batteries.</li>
+                    <li>The bomb has DVI port.</li>
+                    <li>The last digit of the serial number is even.</li>
+                    <li>The peg has black- and white-colored faces.</li>
                 </ul>
                 <p>On the first stage, you can press the button at any time.</p>
                 <h3>Stage 2</h3>
                 <p>
-                    Count red, green and blue on LEDs and on the peg in both stages
-                    (Example: if LEDs are RMG count will be R2 G1 B1).
-                    Let's name this number as X, Y, Z. The top left coordinate is (0, 0). Table is wrapped around it.
-                    X is a row, Y is a column, and Z is a multiplier. Find the intersection of a row and a column.
-                    Multiply it by a multiplier.
-                    Count such from the top left angle. This is your resulting number.
-                    If this number is more than 6, press "YES", otherwise press "No".
-                </p>
-                <p>
-                    Press button, when last digit of timer is equal to amount red(including blending) on both stages, modulo 9.
+                    Count red, green and blue components on LEDs and on the peg in both stages
+                    (Example: if LEDs are RMG, amounts will be: R2 G1 B1).
+                    Let's name these numbers as X, Y, Z (in the respective order). The top-left coordinate in the table is (0, 0). Table wraps around.
+                    X is the row, Y is the column, and Z is the multiplier. Find the intersection of the row and the column.
+                    Apply the multiplier. Call this number N.
+                    Find the Nth cell in zero-indexed reading order. This is your resulting number.
+                    If this number is greater than 6, press "YES", otherwise press "NO".
                 </p>
             </div>
             <div class="page-footer relative-footer">Page 1 of 3</div>
@@ -77,6 +73,9 @@
                 <span class="page-header-section-title">The Colored Peg</span>
             </div>
             <div class="page-content">
+                <p>
+                    Press the button when last digit of the timer is equal to the number of red components on both stages, modulo 9.
+                </p>
               <table>
                     <tr><td>5</td><td>1</td><td>4</td><td>2</td><td>9</td><td>7</td><td>8</td><td>3</td><td>6</td></tr>
                     <tr><td>3</td><td>4</td><td>2</td><td>9</td><td>1</td><td>9</td><td>7</td><td>7</td><td>5</td></tr>
@@ -90,11 +89,11 @@
                 </table>
                 <h3>Stage 3</h3>
                 <p>
-                    Convert all colors into digit and logical operations using table below. Find two values: <br>
-                    Value 1: "<code>(A [1] (B [2] С)) [4] C</code>"<br>
-                    Value 2: "<code>B [3] (C [4] (A [5] C))</code>"<br>
-                    [n] is operation n color on the peg in order appearing on the module.
-                    A, B, C is values LEDs.
+                    Convert all colors into digits and logical operations using table below. Find two values: <br>
+                    Value 1: <code>(A [1] (B [2] С)) [4] C</code><br>
+                    Value 2: <code>B [3] (C [4] (A [5] C))</code><br>
+                    where [n] is the operation of the nth color on the peg in the order appearing on the module.
+                    A, B, C are values of the LEDs.
                 </p>
                <table>
                    <tr>
@@ -145,7 +144,7 @@
                </table>
                <p>
                    If the second value is greater than the first, press "NO", otherwise press "YES".
-                   You should press the button when the smallest of two values modulo 10 is the last digit of the bomb's timer.
+                   Press the button when the smallest of the two values modulo 10 is the last digit of the bomb's timer.
                </p>
             </div>
             <div class="page-footer relative-footer">Page 2 of 3</div>
